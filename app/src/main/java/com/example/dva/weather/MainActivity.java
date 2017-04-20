@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final int UPDATE_TODAY_WEATHER = 1;
 //    private static final int UPDATE_TODAY_WEATHER_IMG=2;
-
+    private String updataCityCode = "-1";
     private ImageView CitySelect;
     private ImageView UpdateBtn;
     private TextView city_nameTV,cityTV,timeTV,humidityTV,pm2_5,pm2_5_dataTV,pm2_5_qualityTV,week_todayTV,temperatureTV,climateTV,windTV;
@@ -81,6 +81,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
 
         initview();
+
 
 
     }
@@ -318,7 +319,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         pm2.5图片
          */
         int a=0;
-        a=Integer.parseInt(todayWeather.getPm2_5().toString());
+        if ("".equals(todayWeather.getPm2_5())) {
+            a = Integer.parseInt(todayWeather.getPm2_5().toString());
+            pm2_5_dataTV.setText("暂无");
+            pm2_5_qualityTV.setText("暂无");
+        }
         if (a<=50){
             pmImg.setImageResource(images[0]);
         }else if (a<=100){

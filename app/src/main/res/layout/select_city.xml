@@ -7,7 +7,9 @@
 
     tools:context="com.example.dva.weather.SelectCity">
     <RelativeLayout
+        android:id="@+id/select_city_title"
         android:layout_width="match_parent"
+        android:visibility="visible"
         android:layout_height="45dp"
         android:background="#ffcd2626">
         <TextView
@@ -34,7 +36,35 @@
             android:layout_toRightOf="@id/title_back"
             android:background="#A71717"
             android:gravity="center"/>
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:src="@android:drawable/ic_menu_search"
+            android:layout_centerVertical="true"/>
 
+
+    </RelativeLayout>
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:iconifiedByDefault="false"
+        android:queryHint="请输入全国城市名称（代码）"
+        android:visibility="invisible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="45dp"
+        android:id="@+id/relativeLayout">
+        <ListView
+            android:id="@+id/select_city_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
     </RelativeLayout>
 
 </RelativeLayout>
