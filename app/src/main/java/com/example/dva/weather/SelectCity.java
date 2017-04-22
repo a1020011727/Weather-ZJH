@@ -1,6 +1,8 @@
 package com.example.dva.weather;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -67,9 +69,15 @@ public class SelectCity extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
+                SharedPreferences sharedPreferences = getSharedPreferences("CityCodePreference", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
                 if (TextUtils.isEmpty(mid_city)) {
                     updateCityCode = mCityList.get(position).getNumber();
                     Log.d("updateCityCode", updateCityCode);
+                    editor.putString("citycode",updateCityCode);
+                    editor.commit();
                     Intent intent = new Intent();
                     intent.putExtra("citycode", updateCityCode);
                     setResult(RESULT_OK, intent);
@@ -83,6 +91,8 @@ public class SelectCity extends AppCompatActivity implements View.OnClickListene
                     }
                     updateCityCode = number;
                     Log.d("updateCityCode",updateCityCode);
+                    editor.putString("citycode",updateCityCode);
+                    editor.commit();
                     Intent intent =new Intent();
                     intent.putExtra("citycode",updateCityCode);
                     setResult(RESULT_OK,intent);
@@ -137,7 +147,7 @@ public class SelectCity extends AppCompatActivity implements View.OnClickListene
                             }
 
                         };
-//                        arrayAdapter.notifyDataSetChanged();*/
+                       arrayAdapter.notifyDataSetChanged();*/
                     }
                 }
                 else {

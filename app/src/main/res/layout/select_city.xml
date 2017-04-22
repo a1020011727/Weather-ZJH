@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:iconifiedByDefault="false"
-        android:queryHint="请输入全国城市名称（代码）"
+        android:queryHint="请输入完整城市名"
         android:visibility="invisible"/>
 
     <RelativeLayout

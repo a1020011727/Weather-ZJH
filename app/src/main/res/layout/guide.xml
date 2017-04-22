@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/guide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dva.weather.guide">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <ImageView
+            android:id="@+id/point_img1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/dot_fouce"/>
+        <ImageView
+            android:id="@+id/point_img2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/dot_unfouce"/>
+        <ImageView
+            android:id="@+id/point_img3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:src="@drawable/dot_unfouce"/>
+    </LinearLayout>
+
+</RelativeLayout>
