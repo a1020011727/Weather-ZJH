@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final int UPDATE_TODAY_WEATHER = 1;
 //    private static final int UPDATE_TODAY_WEATHER_IMG=2;
+    private SharedPreferences sharedPreferences;
     private String updataCityCode = "-1";
     private ImageView CitySelect;
     private ImageView UpdateBtn,Location;
@@ -75,6 +76,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Location.setOnClickListener(this);
 
 
+
         if (NetUtil.getNetworkState(this) != NetUtil.NETWORN_NONE){
             Log.i("Weather","网络已连接");
             Toast.makeText(MainActivity.this,"网络已连接",Toast.LENGTH_SHORT).show();
@@ -85,6 +87,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
 
         initview();
+        sharedPreferences = getSharedPreferences("CityCodePreference",Activity.MODE_PRIVATE);
+        String citycode = sharedPreferences.getString("citycode","");
+        if (!citycode.equals("")){
+            queryWeatherCode(citycode);
+        }
+
 
 
 
@@ -158,7 +166,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.city_update_button){
-            SharedPreferences sharedPreferences = getSharedPreferences("CityCodePreference",Activity.MODE_PRIVATE);
+            sharedPreferences = getSharedPreferences("CityCodePreference",Activity.MODE_PRIVATE);
             String citycode = sharedPreferences.getString("citycode","");
             if (!citycode.equals("")){
                 Log.d("Weather",citycode);
@@ -180,11 +188,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //            startActivity(intent);
             startActivityForResult(intent,1);
         }
-        if (view.getId() == R.id.title_location){
-            Intent intent = new Intent(this,locate.class);
-//            startActivity(intent);
-            startActivityForResult(intent,1);
-        }
+//        if (view.getId() == R.id.title_location){
+//            Intent intent = new Intent(this,locate.class);
+////            startActivity(intent);
+//            startActivityForResult(intent,1);
+//        }
     }
     /**
      * @param  citycode
